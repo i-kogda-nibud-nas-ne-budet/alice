@@ -29,7 +29,7 @@ def dron_vertical():
     global tello
     for i in range(5):
         tello.move_up(50)
-        tello.move_down(100)
+        tello.move_down(50)
 
 class MyInterface(BoxLayout):
     def __init__(self, **kwargs):
@@ -86,10 +86,14 @@ class MyInterface(BoxLayout):
             dron_horizont()
         if self.square_cb.active:
             dron_square()
-        tello.land()
+        height = tello.get_height()
+        tello.move_down(height)
+        tello.turn_motor_off()
     def posadka(self,instance):
         global tello
-        tello.land()
+        height = tello.get_height()
+        tello.move_down(height)
+        tello.turn_motor_off()
         
 
 
